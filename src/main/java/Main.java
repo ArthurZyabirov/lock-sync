@@ -1,11 +1,12 @@
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         final CarShop c = new CarShop();
-        ThreadGroup mainGroup = new ThreadGroup("main group");
-        new Thread(mainGroup, c::sellCar, "Покупатель 1").start();
-        new Thread(mainGroup, c::sellCar, "Покупатель 2").start();
-        new Thread(mainGroup, c::sellCar, "Покупатель 3").start();
-        new Thread(mainGroup, c::recieveCar,"Производитель авто").start();
+
+        for (int i = 1; i < 4; i++) {
+            Thread.sleep(3000);
+            new Thread(null, c::sellCar, "Покупатель " + i).start();
+        }
+        new Thread(null, c::receiveCar,"Производитель авто").start();
     }
 
 }

@@ -7,11 +7,11 @@ import java.util.concurrent.locks.ReentrantLock;
 public class CarShop {
     final CarSeller c = new CarSeller(this);
     List<Car> cars = new ArrayList<>(20);
-    public Car sellCar() {
-        return c.sellCar(Thread.currentThread());
+    public void sellCar() {
+        c.sellCar();
     }
-    public void recieveCar() {
-        c.recieveCar();
+    public void receiveCar() {
+        c.receiveCar();
     }
     List<Car> getCars() {
         return cars;
